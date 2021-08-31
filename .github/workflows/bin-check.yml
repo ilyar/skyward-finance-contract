@@ -16,5 +16,5 @@ jobs:
           components: rustfmt, clippy
           profile: minimal
           override: true
-        run: |
+      - run: |
           bash build_all.sh
