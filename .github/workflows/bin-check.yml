@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  image:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,3 +18,9 @@ jobs:
           override: true
       - run: |
           bash build_all.sh
+          sha256sum release/lockup0.wasm
+          sha256sum lockup/res/lockup0.wasm
+          sha256sum release/skyward.wasm
+          sha256sum skyward/res/skyward.wasm
+          cmp --silent release/skyward.wasm skyward/res/skyward.wasm || echo "files are different"
+          cmp --silent release/lockup0.wasm lockup/res/lockup0.wasm || echo "files are different"
