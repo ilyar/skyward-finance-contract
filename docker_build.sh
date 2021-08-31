@@ -14,5 +14,7 @@ docker run \
      host/skyward/build.sh
 
 echo "Comparing to the release"
+sha256sum release/skyward.wasm
+sha256sum sha256sum release/skyward.wasm
 cmp --silent release/skyward.wasm skyward/res/skyward.wasm || echo "files are different"
 
